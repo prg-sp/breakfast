@@ -57,53 +57,61 @@ Console.WriteLine("----");
 //false meal trap
 Console.ReadLine();
 
-Console.WriteLine("EGGS with BACON? Excelent choice!");
 Console.WriteLine("----");
+Console.WriteLine("EGGS with BACON? Excelent choice!");
+
 Console.WriteLine("How many eggs:");
-int eggQty = Convert.ToInt32(Console.ReadLine());
+int eggQty;
+
+while(!int.TryParse(Console.ReadLine(), out eggQty)){
+  Console.WriteLine("Please enter a number!");
+}
 
 watch.Start();
 
-if(eggQty == 0 ){
+if(eggQty == 0  ){
   Cook.Abort();
   return;
 }
 
 Console.WriteLine("How many slices of bacon:");
-int  baconQty=Convert.ToInt32( Console.ReadLine());
+int baconQty;
+while(!int.TryParse(Console.ReadLine(), out baconQty)){
+  Console.WriteLine("Please enter a number!");
+}
 
 
-Console.WriteLine($"Meal with {eggQty} eggs and {baconQty} commig up!");
+Console.WriteLine($"Meal with {eggQty} eggs and {baconQty}bacon slices commig up!");
 Console.WriteLine("----");
 
 if(baconQty != 0){
   //meal with bacon
   Cook.PreparePan();
-  Eggs.crashingToPan(eggQty);
-  Eggs.fry();
-  Coffee.BoilWater();
-  Toasts.putInToaster();
-  Toasts.putButterOn();
-  Bacon.Slices(baconQty);
+  Eggs.CrashingToPan(eggQty);
+  Eggs.Fry();
+  Bacon.SlicesToPan(baconQty);
   Bacon.Fry();
+  Toasts.PutInToaster();
+  Coffee.BoilWater();
 
   //serving meal
-  Eggs.putOnPlate();
-  Bacon.putOnPlate();
-  Toasts.putOnPlate();
+  Eggs.PutOnPlate();
+  Bacon.PutOnPlate();
+  Toasts.PutButterOn();
+  Toasts.PutOnPlate();
   Coffee.PourInCup();
 } else {
   //meal without bacon
   Cook.PreparePan();
-  Eggs.crashingToPan(eggQty);
-  Eggs.fry();
+  Eggs.CrashingToPan(eggQty);
+  Eggs.Fry();
+  Toasts.PutInToaster();
   Coffee.BoilWater();
-  Toasts.putInToaster();
-  Toasts.putButterOn();
 
   //searving meal
-  Eggs.putOnPlate();
-  Toasts.putOnPlate();
+  Eggs.PutOnPlate();
+  Toasts.PutButterOn();
+  Toasts.PutOnPlate();
   Coffee.PourInCup();
 
 }
@@ -120,85 +128,85 @@ Console.ReadKey();
 
 public static class Coffee {
   public static void BoilWater(){
-//    Task.Delay(2000).ContinueWith(async (t)=>{
+// Task.Delay(2000).ContinueWith(async (t)=>{
     Console.WriteLine("Boiling water...");
-    Thread.Sleep(2000);
+    Thread.Sleep(4000);
  //   });
   }
 
   public static void PourInCup(){
     Console.WriteLine("Pouring coffee into cup");
-    Thread.Sleep(1000);
+    Thread.Sleep(2400);
   }
 }
 
 class Toasts {
-  public static void putInToaster(){
+  public static void PutInToaster(){
     Console.WriteLine("Tousting tousts");
-    Thread.Sleep(2500);
+    Thread.Sleep(4300);
   }
 
-  public static void putButterOn(){
+  public static void PutButterOn(){
     Console.WriteLine("Putting butter on toust");
-    Thread.Sleep(1000);
+    Thread.Sleep(2000);
   }
 
-  public static void putOnPlate(){
-    Console.WriteLine("Putting toast with butter on toust");
-    Thread.Sleep(1000);
+  public static void PutOnPlate(){
+    Console.WriteLine("Putting toast with butter on plate");
+    Thread.Sleep(1500);
   }
 }
 
 class Eggs {
-  public static void crashingToPan(int qty){
+  public static void CrashingToPan(int qty){
     Console.WriteLine($"Crashing {qty} eggs in pan");
   }
 
-  public static void fry(){
+  public static void Fry(){
     Console.WriteLine("Frying eggs");
     Thread.Sleep(3000);
   }
 
-  public static void putOnPlate(){
+  public static void PutOnPlate(){
     Console.WriteLine("Puting eggs on plate");
     Thread.Sleep(1200);
   }
 }
 
 class Bacon{
-    public static void Slices(int qty){
+    public static void SlicesToPan(int qty){
     Console.WriteLine($"Putting {qty}  slices of bacon in pan");
-    Thread.Sleep(1000);
+    Thread.Sleep(2200);
   }
 
   public static void Fry(){
     Console.WriteLine("Frying bacon");
-    Thread.Sleep(2300);
+    Thread.Sleep(4000);
   }
 
-  public static void putOnPlate(){
+  public static void PutOnPlate(){
     Console.WriteLine("Putting bacon on plate");
-    Thread.Sleep(1000);
+    Thread.Sleep(1400);
   }
 }
 
 class Cook{
   public static void PreparePan(){
     Console.WriteLine("Prepareing pan for cooking..");
-    Thread.Sleep(1000);
+    Thread.Sleep(2100);
   }
 
   public static void Finish(){
     Console.WriteLine("Breakfast is ready! Enjoy");
 
   }
+  
   public static void Abort(){
-    Console.WriteLine("Sorry, but we can not prepare eggs without eggs");
+    Console.WriteLine("Sorry, but we can not prepare this meal without eggs!");
   }
 
   public static void Time(double time){
     Console.WriteLine($"Time needed for prepareing breakfast: {time/1000} seconds");
-
   }
 }
 
