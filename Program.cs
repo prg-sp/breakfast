@@ -1,41 +1,57 @@
-﻿var watch = new System.Diagnostics.Stopwatch();
+﻿// Code for calculating app duration
+var watch = new System.Diagnostics.Stopwatch();
 
 Console.WriteLine("Good morning! Let's have some breakfast");
 
 // False meal trap
 Console.WriteLine("What would you like to have?");
-
 Console.WriteLine("----");
 Console.ReadLine();
 Console.WriteLine("----");
-
 Console.WriteLine("EGGS with BACON? Excelent choice!");
 
+// First input (out of 2)
 Console.WriteLine("How many eggs:");
 int eggQty;
 
-// Error handling
+// Accepts only numbers
 while (!int.TryParse(Console.ReadLine(), out eggQty))
 {
     Console.WriteLine("Please enter a number!");
 }
 
+// Start app calculating duration
 watch.Start();
 
+// Second chance to have an order
 if (eggQty == 0)
 {
-    Cook.Abort();
+    Cook.Warning();
+
+    while (!int.TryParse(Console.ReadLine(), out eggQty))
+    {
+        Console.WriteLine("How about a number?;)");
+    }
+}
+
+//  Cancel order
+if (eggQty == 0)
+{
+    Console.WriteLine("Goodbye!");
     return;
 }
 
+// Second input
 Console.WriteLine("How many slices of bacon:");
 int baconQty;
 
+// Input accepts only numbers 
 while (!int.TryParse(Console.ReadLine(), out baconQty))
 {
     Console.WriteLine("Please enter a number!");
 }
 
+// Types a word insted of zero 
 string bacon = baconQty != 0 ? baconQty.ToString() : "NO";
 
 // Cooking code
@@ -80,6 +96,7 @@ else
 Console.WriteLine("----");
 Cook.Finish();
 
+// Stop calculating app duration
 watch.Stop();
 
 Cook.Time(watch.ElapsedMilliseconds);
@@ -179,9 +196,9 @@ public static class Cook
 
     }
 
-    public static void Abort()
+    public static void Warning()
     {
-        Console.WriteLine("Sorry, but we can not prepare this meal without eggs!");
+        Console.WriteLine("Sorry, but we can't prepare this meal without eggs.\nChoose another number, or type 0 again to cancel order:(");
     }
 
     public static void Time(double time)
