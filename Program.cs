@@ -81,7 +81,7 @@
 
             // Cooking code. Let's say coffee first and then the meal
 
-            Console.WriteLine("----1.Prepareing meal");
+            Console.WriteLine("----1. Preparing meal");
             Coffee.BoilWater();
             Coffee.PourInCup();
             Coffee.ServeToCustomer();
@@ -94,7 +94,7 @@
             Toasts.PutButterOn();
             Toasts.PutOnPlate();
 
-            Console.WriteLine("----2.Serving meal");
+            Console.WriteLine("----2. Serving meal");
             Kitchen.ServeMeal();
 
             // Stop calculating app duration
