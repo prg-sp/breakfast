@@ -165,7 +165,7 @@
             {
                 Console.WriteLine("Frying eggs...");
                 Task.Delay(6000).Wait();
-                Console.WriteLine("Put eggs on the plate!");
+                Console.WriteLine("Put eggs on plate!");
             }
         }
 
@@ -180,7 +180,7 @@
             {
                 Console.WriteLine("Frying bacon...");
                 Task.Delay(5000).Wait();
-                Console.WriteLine("Put bacon in plate");
+                Console.WriteLine("Put bacon on plate");
             }
         }
 
