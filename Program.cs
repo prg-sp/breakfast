@@ -4,33 +4,33 @@
     {
         static void Main(string[] args)
         {
-            // Code for calculating app duration
+            // Code for calculating app duration.
             var watch = new System.Diagnostics.Stopwatch();
 
-            // Introduction
+            // Introduction.
             Console.WriteLine("Good morning! Let's have some breakfast");
 
-            // False meal trap
+            // False meal trap.
             Console.WriteLine("What would you like to have?");
             Console.ReadLine();
             Console.WriteLine("----");
             Console.WriteLine("EGGS with BACON? Excelent choice!");
             Console.WriteLine("----");
 
-            // First input (out of 2)
+            // First input (out of 2).
             Console.WriteLine("How many eggs:");
             int eggQty;
 
-            // First input accepts only numbers
+            // First input accepts only numbers.
             while (!int.TryParse(Console.ReadLine(), out eggQty))
             {
                 Console.WriteLine("Please enter a number!");
             }
 
-            // Start calculating app duration
+            // Start calculating app duration.
             watch.Start();
 
-            // Second chance to have an order or cancel order
+            // Second chance to have an order or cancel order.
             if (eggQty == 0)
             {
                 Kitchen.Warning("eggs");
@@ -40,24 +40,24 @@
                 }
             }
 
-            //  If 0 Cancel order
+            //  If 0 Cancel order.
             if (eggQty == 0)
             {
                 Console.WriteLine("Goodbye!");
                 return;
             }
 
-            // Second input (out of 2)
+            // Second input (out of 2).
             Console.WriteLine("How many slices of bacon:");
             int baconQty;
 
-            // Second input accepts only numbers
+            // Second input accepts only numbers.
             while (!int.TryParse(Console.ReadLine(), out baconQty))
             {
                 Console.WriteLine("Please enter a number!");
             }
 
-            // Second chance to choose bacon quantity or cancel order
+            // Second chance to choose bacon quantity or cancel order.
             if (baconQty == 0)
             {
                 Kitchen.Warning("bacon");
@@ -67,19 +67,19 @@
                 }
             }
 
-            //  If 0 Cancel order
+            //  If 0 Cancel order.
             if (baconQty == 0)
             {
                 Console.WriteLine("Goodbye!");
                 return;
             }
 
-            // Order was placed
+            // Order was placed.
             Console.WriteLine("----");
             Console.WriteLine($"Your order: Omlet with {eggQty} eggs and {baconQty} bacon slices. Coming right up!");
             Console.WriteLine("----");
 
-            // Cooking code. Let's say coffee first and then the meal
+            // Cooking code. Let's say coffee first and then the meal.
             Console.WriteLine("----1. Preparing meal");
             Coffee.BoilWater();
             Coffee.PourInCup();
@@ -95,14 +95,14 @@
             Console.WriteLine("----2. Serving meal");
             Kitchen.ServeMeal();
 
-            // Stop calculating app duration
+            // Stop calculating app duration.
             watch.Stop();
 
-            // App duration info
+            // App duration info.
             Console.WriteLine("----");
             Kitchen.Time(watch.ElapsedMilliseconds);
 
-            // The end
+            // The end.
             Console.WriteLine("----");
             Console.WriteLine("Press any key to exit!");
             Console.ReadKey();
