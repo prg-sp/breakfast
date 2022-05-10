@@ -80,7 +80,6 @@
             Console.WriteLine("----");
 
             // Cooking code. Let's say coffee first and then the meal
-
             Console.WriteLine("----1. Preparing meal");
             Coffee.BoilWater();
             Coffee.PourInCup();
@@ -93,7 +92,6 @@
             Toasts.PutInToaster();
             Toasts.PutButterOn();
             Toasts.PutOnPlate();
-
             Console.WriteLine("----2. Serving meal");
             Kitchen.ServeMeal();
 
@@ -193,12 +191,10 @@
                 Console.WriteLine("Breakfast is ready and it was served to customer! Enjoy");
                 Task.Delay(2000).Wait();
             }
-
             public static void Warning(string ingredient)
             {
                 Console.WriteLine($"Sorry, no {ingredient} no meal.\nChoose another number, or type 0 again to cancel order:(");
             }
-
             public static void Time(double time)
             {
                 Console.WriteLine($"Time needed for prepareing breakfast: {time / 1000} seconds");
