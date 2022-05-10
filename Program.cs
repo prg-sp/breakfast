@@ -82,12 +82,17 @@
             // Cooking code. Let's say coffee first and then the meal
 
             Console.WriteLine("----1.Cooking");
+            Kitchen.PreparePan();
             Coffee.BoilWater();
             Coffee.PourInCup();
-            Eggs.Fry(eggQty);
-            Bacon.Fry(baconQty);
+            Coffee.ServeToCustomer();
+            Eggs.PutInPan(eggQty);
+            Eggs.FryEggs();
+            Bacon.SlicesToPan(baconQty);
+            Bacon.FryBacon();
             Toasts.PutInToaster();
             Toasts.PutButterOn();
+            Toasts.PutOnPlate();
 
             Console.WriteLine("----2.Serving");
             Kitchen.ServeMeal();
@@ -110,107 +115,86 @@
             public static void BoilWater()
             {
                 Console.WriteLine("Boiling water...");
-                Task.Delay(4000).Wait();
-                Console.WriteLine("Hot water prepared for coffee!");
-                Task.Delay(1000).Wait();
+                Task.Delay(3000).Wait();
+                Console.WriteLine("Hot water prepared for coffee.");
             }
 
             public static void PourInCup()
             {
-                Console.WriteLine("Pouring coffee into cup...");
-                Task.Delay(2000).Wait();
-                Console.WriteLine("Coffee was served to customer!");
-                Task.Delay(1000).Wait();
+                Console.WriteLine("Pouring coffee into cup.");
+                Task.Delay(1500).Wait();
             }
 
-            // public static async Task ServeToCustomer()
-            // {
-            // await Task.Delay(2000);
-            // }
+            public static void ServeToCustomer()
+            {
+                Console.WriteLine("Serve coffee to customer.");
+                Task.Delay(2000).Wait();
+            }
         }
 
         public static class Toasts
         {
             public static void PutInToaster()
             {
-                Console.WriteLine("Put  toast in toaster...");
-                Task.Delay(3000).Wait();
+                Console.WriteLine("Put  bread in toaster...");
+                Task.Delay(3000);
                 Console.WriteLine("Toust was baked!");
-                Task.Delay(1000).Wait();
             }
 
             public static void PutButterOn()
             {
-                Console.WriteLine("Putting butter on toust...");
+                Console.WriteLine("Appling butter on toust.");
                 Task.Delay(2000).Wait();
-                Console.WriteLine("Put toast with butter on plate!");
-                Task.Delay(3000).Wait();
             }
 
-            // public static async Task PrepareToServe()
-            // {
-            // Console.WriteLine("Toast was put on plate and its ready to be served!");
-            // await Task.Delay(2000);
-            // }
+            public static void PutOnPlate()
+            {
+                Console.WriteLine("Toast on plate!");
+                Task.Delay(2000).Wait();
+            }
         }
 
         public static class Eggs
         {
-            public static void Fry(int qty)
+            public static void PutInPan(int qty)
             {
-
-                Console.WriteLine($"Preparing pan...");
-                Task.Delay(2000).Wait();
                 Console.WriteLine($"Crashing {qty} eggs in pan");
-                Task.Delay(1000).Wait();
-                // }
-
-                // public static async Task Fry()
-                // {
-                Console.WriteLine("Frying eggs...");
-                Task.Delay(4000).Wait();
-                Console.WriteLine("Put eggs on the plate!");
-                Task.Delay(1000).Wait();
+                Task.Delay(2000).Wait();
             }
 
-            // public static async Task PrepareToServe()
-            // {
-            // Console.WriteLine("Eggs were put on plate and its ready to be served!");
-            // await Task.Delay(2000);
-            // }
+            public static void FryEggs()
+            {
+                Console.WriteLine("Frying eggs...");
+                Task.Delay(6000).Wait();
+                Console.WriteLine("Put eggs on the plate!");
+            }
         }
 
         public static class Bacon
         {
-            // public static async Task SlicesToPan(int qty)
-            // {
-            // Console.WriteLine($"Putting {qty}  slices of bacon in pan");
-            // await Task.Delay(2500);
-            // }
-
-            public static void Fry(int qty)
+            public static void SlicesToPan(int qty)
             {
                 Console.WriteLine($"Putting {qty}  slices of bacon in pan");
-                Console.WriteLine("Frying bacon...");
-                Task.Delay(6000).Wait();
-                Console.WriteLine("Put bacon in plate");
-                Task.Delay(1000).Wait();
+                Task.Delay(2500).Wait();
             }
 
-            // public static async Task PrepareToServe()
-            // {
-            // Console.WriteLine("Bacon was put on plate and its ready to be served!");
-            // await Task.Delay(2000);
-            // }
+            public static void FryBacon()
+            {
+                Console.WriteLine("Frying bacon...");
+                Task.Delay(5000).Wait();
+                Console.WriteLine("Put bacon in plate");
+            }
+
         }
 
         public static class Kitchen
         {
-            // public static void PreparePan()
-            // {
-            // Console.WriteLine("Preparing pan for cooking...");
-            // Task.Delay(2000).Wait();
-            // }
+            public static void PreparePan()
+            {
+                Console.WriteLine("Preparing pan for cooking...");
+                Task.Delay(1000).Wait();
+                Console.WriteLine("Pan is ready for action");
+            }
 
             public static void ServeMeal()
             {
@@ -228,5 +212,6 @@
                 Console.WriteLine($"Time needed for prepareing breakfast: {time / 1000} seconds");
             }
         }
+
     }
 }
