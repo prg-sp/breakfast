@@ -80,7 +80,7 @@
             Console.WriteLine("----");
 
             // Cooking code. Let's say coffee first and then the meal
-            Console.WriteLine("----1.Cooking");
+            Console.WriteLine("----1. Preparing meal");
 
             // Putting grouped actions in tasks
             var coffeeTask = PrepareCoffeeAndServeAsync();
@@ -112,7 +112,7 @@
                 breakfastTasks.Remove(finishedTask);
             }
 
-            Console.WriteLine("----2.Serving");
+            Console.WriteLine("----2. Serving meal");
             Kitchen.ServeMeal();
 
             // Stop calculating app duration
