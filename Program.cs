@@ -81,11 +81,11 @@
 
             // Cooking code. Let's say coffee first and then the meal
 
-            Console.WriteLine("----1.Cooking");
-            Kitchen.PreparePan();
+            Console.WriteLine("----1.Prepareing meal");
             Coffee.BoilWater();
             Coffee.PourInCup();
             Coffee.ServeToCustomer();
+            Eggs.PreparePan();
             Eggs.PutInPan(eggQty);
             Eggs.FryEggs();
             Bacon.SlicesToPan(baconQty);
@@ -94,7 +94,7 @@
             Toasts.PutButterOn();
             Toasts.PutOnPlate();
 
-            Console.WriteLine("----2.Serving");
+            Console.WriteLine("----2.Serving meal");
             Kitchen.ServeMeal();
 
             // Stop calculating app duration
@@ -118,13 +118,11 @@
                 Task.Delay(3000).Wait();
                 Console.WriteLine("Hot water prepared for coffee.");
             }
-
             public static void PourInCup()
             {
                 Console.WriteLine("Pouring coffee into cup.");
                 Task.Delay(1500).Wait();
             }
-
             public static void ServeToCustomer()
             {
                 Console.WriteLine("Serve coffee to customer.");
@@ -140,13 +138,11 @@
                 Task.Delay(3000);
                 Console.WriteLine("Toust was baked!");
             }
-
             public static void PutButterOn()
             {
                 Console.WriteLine("Appling butter on toust.");
                 Task.Delay(2000).Wait();
             }
-
             public static void PutOnPlate()
             {
                 Console.WriteLine("Toast on plate!");
@@ -156,12 +152,17 @@
 
         public static class Eggs
         {
+            public static void PreparePan()
+            {
+                Console.WriteLine("Preparing pan for cooking...");
+                Task.Delay(2000).Wait();
+                Console.WriteLine("Pan is ready for action");
+            }
             public static void PutInPan(int qty)
             {
                 Console.WriteLine($"Crashing {qty} eggs in pan");
                 Task.Delay(2000).Wait();
             }
-
             public static void FryEggs()
             {
                 Console.WriteLine("Frying eggs...");
@@ -177,25 +178,16 @@
                 Console.WriteLine($"Putting {qty}  slices of bacon in pan");
                 Task.Delay(2500).Wait();
             }
-
             public static void FryBacon()
             {
                 Console.WriteLine("Frying bacon...");
                 Task.Delay(5000).Wait();
                 Console.WriteLine("Put bacon in plate");
             }
-
         }
 
         public static class Kitchen
         {
-            public static void PreparePan()
-            {
-                Console.WriteLine("Preparing pan for cooking...");
-                Task.Delay(1000).Wait();
-                Console.WriteLine("Pan is ready for action");
-            }
-
             public static void ServeMeal()
             {
                 Console.WriteLine("Breakfast is ready and it was served to customer! Enjoy");
@@ -212,6 +204,5 @@
                 Console.WriteLine($"Time needed for prepareing breakfast: {time / 1000} seconds");
             }
         }
-
     }
 }
